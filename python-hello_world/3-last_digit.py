@@ -11,4 +11,7 @@ def is_greater(last_digit):
         return "and is less than 6 and not 0"
 
 res = is_greater(last_digit)
-print("Last digit of {} is {} {}".format(number,last_digit, res))
+if number > 0:
+    print("Last digit of {} is {} {}".format(number,last_digit, res))
+elif number < 0:
+    print("Last digit of {} is -{} {}".format(number,last_digit, res))
