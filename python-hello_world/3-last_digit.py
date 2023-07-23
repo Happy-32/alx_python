@@ -1,24 +1,18 @@
-#!/usr/bin/python3
 import random
+
 number = random.randint(-10000, 10000)
-last_digit = str(number)[-1]
-# def is_greater(last_digit):
-#     if int(last_digit) > 5:
-#         return "and is greater than 5"
-#     elif int(last_digit) == 0:
-#         return "and is zero"
-#     elif int(last_digit) < 6 and int(last_digit) != 0:
-#         return "and is less than 6 and not 0"
 
-# res = is_greater(last_digit)
+def last_num(number):
+    return abs(number) % 10
+print(number)
+last = last_num(number)
+print(last)
 # if number > 0:
-#     print("Last digit of {} is {} {}".format(number,last_digit, res))
-# elif number < 0:
-#     print("Last digit of {} is -{} {}".format(number,last_digit, res))
-
-if last_digit == 0:
-    print("last digit of ",number, "is ",last_digit)
-elif number > 0:
-    print("Last digit of ",number, "is ",last_digit)
-elif number < 0:
-    print("Last digit of ",number, "is -{}".format(last_digit))
+#     print(number, "is greater than zero")
+#     last_digit = last_num(number)
+#     if last_digit > 5:
+#         print("Last digit of {} is {} and is greater than 5".format(number, last_digit))
+#     elif last_digit == 0:
+#         print("Last digit of {} is 0".format(number))
+#     else:
+#         print("Last digit of {} is {} and is less than 6 and not 0".format(number, last_digit))
