@@ -1,3 +1,3 @@
-for i in range(0,99):
-    for j in range(0,99):
-        print(i)
+for i in range(10):
+    for j in range (10):
+        print("{}{}, ".format(i,j),end="")
