@@ -6,7 +6,9 @@ def safe_print_division(a, b):
     except Exception as e:
         return None
     finally:
-        print("Inside Result: {}".format(dividend))
+        if b != 0:
+            print("Inside Result: {}".format(dividend))
+            return dividend
 
 
 # print(safe_print_division(10,5))
