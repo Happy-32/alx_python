@@ -16,15 +16,3 @@ class Square:
                 return self.__size
         except TypeError as te:
             print("size must be >= 0")
-
-Try = Square(-89)
-Try2 = Square("3")
-Try3 = Square(-89)
-print(Try.size_isInt())
-print(Try.size_lzero())
-
-print(Try2.size_isInt())
-print(Try2.size_lzero())
-
-print(Try2.size_isInt())
-print(Try2.size_lzero())
