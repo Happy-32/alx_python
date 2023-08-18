@@ -9,7 +9,7 @@ class Square:
             self.__size = size
 
 
-# Try = Square(-89)
+Try = Square(-89)
 # # Try2 = Square("3")
 # # Try3 = Square(-89)
 # print(Try)
