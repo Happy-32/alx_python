@@ -32,8 +32,8 @@ class Square:
 
     def size_lzero(self):
         try:
-            if self.__size > 0:
-                return self.__size
+            if self.__size < 0:
+                print("size must be an >= 0")
         except ValueError:
             print("size must be >= 0")
 
