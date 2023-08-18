@@ -1,5 +1,17 @@
 #!/usr/bin/python3
+"""
+Square model defines a square based on its size
+
+-Square: a class that represents the square
+"""
 class Square:
+    """
+    Attributes:
+    -size(int): the size of the square which should be an integer
+
+    Methods:
+    -__init__(size=0): Initializes the square object 
+    """
     def __init__(self, size=0):
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
@@ -9,12 +21,3 @@ class Square:
             self.__size = size
 
 
-Try = Square(-89)
-# # Try2 = Square("3")
-# # Try3 = Square(-89)
-# print(Try)
-# print(Try2.size_isInt())
-# print(Try2.size_lzero())
-
-# print(Try2.size_isInt())
-# print(Try2.size_lzero())
