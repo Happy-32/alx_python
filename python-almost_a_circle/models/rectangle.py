@@ -10,6 +10,8 @@ class Base:
 
     __init__(id = None): initializes the Base object
     __nb_objects: a class level attribute
+    -get_width, -get_height, -get_x, -get_y: getter methods
+    -set_width, -set_height, -set_x, -set_y: setter methods
     """
     __nb_objects = 0
 
@@ -27,8 +29,7 @@ Rectangle defines a class
 """
 class Rectangle(Base):
     """
-    -get_width, -get_height, -get_x, -get_y: getter methods
-    -set_width, -set_height, -set_x, -set_y: setter methods
+    
     """
     
     def __init__(self, width, height, x=0, y=0, id=None):
