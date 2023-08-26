@@ -16,9 +16,9 @@ class Base:
     def __init__(self, id=None):
         if id is not None:
             self.id = id
-        elif id == None:
+        else:
             Base.__nb_objects += 1 #Base allows you to access all class level attributes
-            Base.id = self.__nb_objects
+            self.id = Base.__nb_objects
 
 
 class Rectangle(Base):
@@ -43,7 +43,7 @@ class Rectangle(Base):
             y(int): y coordinate of the rectangle
             id(int): unique udentifier, default value of zero
         """
-        Base.__init__(self,id=None)
+        Base.__init__(self,id)
         self.__width = width
         self.__height = height
         self.__x = x
@@ -138,10 +138,10 @@ class Rectangle(Base):
 # print(r2.id)
 # r3 = Rectangle(10,2,0,0,32)
 # print(r3.id)
-r4 = Rectangle(10,2,0,0,4)
-print(r4.id)
-r5 = Rectangle(10,2,0,0,47)
-print(r5.id)
+# r4 = Rectangle(10,2,0,0,4)
+# print(r4.id)
+# r5 = Rectangle(10,2,0,0,47)
+# print(r5.id)
 
 # r1 = Rectangle(10, "the")
 # print(r1.id)
