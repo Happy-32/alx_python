@@ -16,8 +16,8 @@ class Rectangle(Base):
         self.x = x
         self.y= y
 
-b1 = Base(3)
-print(b1.id)
-r1 = Rectangle(4,5,0,0)
-print(r1.id)
+# b1 = Base(3)
+# print(b1.id)
+# r1 = Rectangle(4,5,0,0)
+# print(r1.id)
 # print(help(Rectangle))
