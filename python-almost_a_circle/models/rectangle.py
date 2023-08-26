@@ -99,10 +99,11 @@ class Rectangle(Base):
         Returns:
             int: The width of the rectangle
         """
-        if self.width is not int:
+        if not isinstance(width, int):
             raise TypeError("width must be an integer")
         else:
             self.__width = width
+
         
         if width <= 0:
             raise ValueError("width must be > 0")
@@ -125,10 +126,11 @@ class Rectangle(Base):
         Returns:
             int: The height of the rectangle
         """
-        if self.height is not int:
+        if not isinstance(height, int):
             raise TypeError("height must be an integer")
         else:
             self.__height = height
+
         
         if height <= 0:
             raise ValueError("height must be > 0")
@@ -151,10 +153,11 @@ class Rectangle(Base):
         Returns:
             int: The x coordinate of the rectangle
         """
-        if self.x is not int:
+        if not isinstance(x, int):
             raise TypeError("x must be an integer")
         else:
             self.__x = x
+
 
         if x < 0:
             raise ValueError("x must be >= 0")
@@ -178,10 +181,11 @@ class Rectangle(Base):
             int: The y coordinate of the rectangle
         """
         
-        if self.y is not int:
+        if not isinstance(y, int):
             raise TypeError("y must be an integer")
         else:
             self.__y = y
+
         
         if y < 0:
             raise ValueError("y must be >= 0")
