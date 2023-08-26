@@ -1,20 +1,23 @@
-import unittest
+class Base:
 
-class TestStringMethods(unittest.TestCase):
+    __nb_objects__ = 0
+    def __init__(self, id=None):
+        if id is not None:
+            self.id = id
+        else:
+            None
 
-  def test_upper(self):
-      self.assertEqual('foo'.upper(), 'FOO')
+class Rectangle(Base):
 
-  def test_isupper(self):
-      self.assertTrue('FOO'.isupper())
-      self.assertFalse('Foo'.isupper())
+    def __init__(self, width, height, x, y, id=None):
+        Base.__init__(self,id)
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y= y
 
-  def test_split(self):
-      s = 'hello world'
-      self.assertEqual(s.split(), ['hello', 'world'])
-      # check that s.split fails when the separator is not a string
-      with self.assertRaises(TypeError):
-          s.split(2)
-
-if __name__ == '__main__':
-    unittest.main()
+b1 = Base(3)
+print(b1.id)
+r1 = Rectangle(4,5,0,0)
+print(r1.id)
+# print(help(Rectangle))

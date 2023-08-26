@@ -6,7 +6,7 @@ Base defines a python class
 """
 class Base:
     """
-    __init__(self, id=None)- Attribute to chect if id is None
+    __init__(self, id=None)- Attribute to checK if id is None
 
     __init__(id = None): initializes the Base object
     __nb_objects: a class level attribute
@@ -16,7 +16,7 @@ class Base:
     def __init__(self, id=None):
         if id is not None:
             self.id = id
-        else:
+        elif id == None:
             Base.__nb_objects += 1 #Base allows you to access all class level attributes
             Base.id = self.__nb_objects
 
@@ -43,7 +43,7 @@ class Rectangle(Base):
             y(int): y coordinate of the rectangle
             id(int): unique udentifier, default value of zero
         """
-        super().__init__(id=None)
+        Base.__init__(self,id=None)
         self.__width = width
         self.__height = height
         self.__x = x
@@ -67,7 +67,10 @@ class Rectangle(Base):
         Returns:
             int: The width of the rectangle
         """
-        self.__width = width
+        if self.width is not int:
+            raise ("Width must be an integer")
+        else:
+            self.__width = width
     
     @property
     def height(self):
@@ -128,3 +131,23 @@ class Rectangle(Base):
             int: The y coordinate of the rectangle
         """
         self.__y = y
+
+# r1 = Rectangle(10,2,0,0,1)
+# print(r1.id)
+# r2 = Rectangle(10,2,0,0,2)
+# print(r2.id)
+# r3 = Rectangle(10,2,0,0,32)
+# print(r3.id)
+r4 = Rectangle(10,2,0,0,4)
+print(r4.id)
+r5 = Rectangle(10,2,0,0,47)
+print(r5.id)
+
+# r1 = Rectangle(10, "the")
+# print(r1.id)
+
+# r2 = Rectangle(2, 10)
+# print(r2.id)
+
+# r3 = Rectangle(10, 2, 0, 0, 12)
+# print(r3.id)
