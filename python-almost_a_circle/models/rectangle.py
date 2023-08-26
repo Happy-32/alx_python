@@ -68,7 +68,7 @@ class Rectangle(Base):
             int: The width of the rectangle
         """
         if self.width is not int:
-            raise ("Width must be an integer")
+            raise TypeError("width must be an integer")
         else:
             self.__width = width
     
@@ -90,7 +90,10 @@ class Rectangle(Base):
         Returns:
             int: The height of the rectangle
         """
-        self.__height = height
+        if self.height is not int:
+            raise TypeError("height must be an integer")
+        else:
+            self.__height = height
     
     @property
     def x(self):
@@ -110,7 +113,10 @@ class Rectangle(Base):
         Returns:
             int: The x coordinate of the rectangle
         """
-        self.__x = x
+        if self.x is not int:
+            raise TypeError("x must be an integer")
+        else:
+            self.__x = x
     
     @property    
     def y(self):
@@ -130,5 +136,8 @@ class Rectangle(Base):
         Returns:
             int: The y coordinate of the rectangle
         """
-        self.__y = y
+        if self.y is not int:
+            raise TypeError("y must be an integer")
+        else:
+            self.__y = y
 
