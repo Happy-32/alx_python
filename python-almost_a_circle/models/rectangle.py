@@ -1,26 +1,5 @@
 #!/usr/bin/python3
-"""
-Base defines a python class 
-
--Base: class representing Base
-"""
-class Base:
-    """
-    __init__(self, id=None)- Attribute to checK if id is None
-
-    __init__(id = None): initializes the Base object
-    __nb_objects: a class level attribute
-    """
-    __nb_objects = 0
-
-    def __init__(self, id=None):
-        if id is not None:
-            self.id = id
-        else:
-            Base.__nb_objects += 1 #Base allows you to access all class level attributes
-            self.id = Base.__nb_objects
-
-
+from base import Base
 class Rectangle(Base):
     """
     Rectangle represents a Rectangle object that inherits from the Base class
@@ -132,22 +111,4 @@ class Rectangle(Base):
         """
         self.__y = y
 
-# r1 = Rectangle(10,2,0,0,1)
-# print(r1.id)
-# r2 = Rectangle(10,2,0,0,2)
-# print(r2.id)
-# r3 = Rectangle(10,2,0,0,32)
-# print(r3.id)
-# r4 = Rectangle(10,2,0,0,4)
-# print(r4.id)
-# r5 = Rectangle(10,2,0,0,47)
-# print(r5.id)
-
-# r1 = Rectangle(10, "the")
-# print(r1.id)
-
-# r2 = Rectangle(2, 10)
-# print(r2.id)
-
-# r3 = Rectangle(10, 2, 0, 0, 12)
-# print(r3.id)
+#
