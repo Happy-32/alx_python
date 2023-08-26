@@ -57,7 +57,10 @@ class Rectangle(Base):
         Returns:
             int: The width of the rectangle
         """
-        return self.__width
+        if self.width is not int:
+            raise TypeError("width must be an integer")
+        else:
+            return self.__width
     
     @width.setter
     def width(self,width):
