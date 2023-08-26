@@ -83,7 +83,10 @@ class Rectangle(Base):
         Returns:
             int: The height of the rectangle
         """
-        return self.__height
+        if self.height is not int:
+            raise TypeError("height must be an integer")
+        else:
+            return self.__height
     
     @height.setter
     def height(self,height):
@@ -106,7 +109,10 @@ class Rectangle(Base):
         Returns:
             int: The x coordinate of the rectangle
         """
-        return self.__x
+        if self.x is not int:
+            raise TypeError("x must be an integer")
+        else:
+            return self.__x
     
     @x.setter
     def x(self,x):
@@ -129,7 +135,10 @@ class Rectangle(Base):
         Returns:
             int: The y coordinate of the rectangle
         """
-        return self.__y
+        if self.y is not int:
+            raise TypeError("y must be an integer")
+        else:
+            return self.__y
     
     @y.setter
     def y(self,y):
