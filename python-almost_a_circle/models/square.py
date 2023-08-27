@@ -1,5 +1,4 @@
 from rectangle import Rectangle
-
 class Square(Rectangle):
     """
     Defines a square class that inherits from rectangle class
