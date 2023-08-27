@@ -202,5 +202,4 @@ class Rectangle(Base):
         """
         for i in range(self.width):
             for j in range(self.height):
-                print("#" * self.height)
-            print("#" * self.width)
+                print("#" * self.width)
