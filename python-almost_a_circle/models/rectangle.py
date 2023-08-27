@@ -200,6 +200,5 @@ class Rectangle(Base):
         """
         Returns a rectangle
         """
-        for i in range(self.width):
-            for j in range(self.height):
-                print("#" * self.width)
+        for j in range(self.height):
+            print("#" * self.width)
