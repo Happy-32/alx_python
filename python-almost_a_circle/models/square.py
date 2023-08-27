@@ -1,4 +1,4 @@
-from rectangle import Rectangle
+from .rectangle import Rectangle
 class Square(Rectangle):
     """
     Defines a square class that inherits from rectangle class
@@ -11,7 +11,3 @@ class Square(Rectangle):
     def __str__(self):
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
     
-s1 = Square(5)
-print(s1)
-print(s1.area())
-s1.display()
