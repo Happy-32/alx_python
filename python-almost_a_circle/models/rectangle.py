@@ -208,9 +208,15 @@ class Rectangle(Base):
             print(" " * self.x + "#" * self.width)
 
     def __str__(self):
+        """
+        print in stdout the Rectangle instance with the character # by taking care of x and y
+        """
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
     
     def update(self, *args):
+        """
+        Assign an argument to each variable
+        """
         if len(args) >= 1:
             self.id = args[0]
         if len(args) >= 2:
