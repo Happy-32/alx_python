@@ -43,6 +43,7 @@ class Rectangle(Base):
             y(int): y coordinate of the rectangle
             id(int): unique udentifier, default value of zero
         """
+        
         Base.__init__(self,id)
         self.__width = width
         self.__height = height
@@ -54,16 +55,16 @@ class Rectangle(Base):
         else:
             self.__width = width
 
-        if width <= 0:
-            raise ValueError("width must be > 0")
+        # if width <= 0:
+        #     raise ValueError("width must be > 0")
 
         if not isinstance(height, int):
             raise TypeError("height must be an integer")
         else:
             self.__height = height
 
-        if height <= 0:
-            raise ValueError("height must be > 0")
+        # if height <= 0:
+        #     raise ValueError("height must be > 0")
 
         if not isinstance(x, int):
             raise TypeError("x must be an integer")
