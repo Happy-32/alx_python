@@ -17,9 +17,9 @@ if __name__ == "__main__":
     def select_state(username, password, database, state):
         # print("{}, {}, {}, {}".format(username,password,database, state))
         
-        database = MySQLdb.connect(host="localhost", user=username, passwd=password, db=database)
+        database = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
         cursor = database.cursor()
-        cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (state,))
+        cursor.execute("SELECT * FROM states WHERE BINARY name = %s ORDER BY id ASC", (state,))
         rows = cursor.fetchall()
         for row in rows:
             print(row)

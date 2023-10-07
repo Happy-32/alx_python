@@ -15,7 +15,7 @@ if __name__ == "__main__":
     # print("{}, {}, {}".format(username,password,database))
 
     def select_state(username, password, database):
-        database = MySQLdb.connect(host="localhost", user=username, passwd=password, db=database)
+        database = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
         cursor = database.cursor()
         cursor.execute("SELECT * FROM states WHERE SUBSTRING(name,1,1)='N'")
         rows = cursor.fetchall()
