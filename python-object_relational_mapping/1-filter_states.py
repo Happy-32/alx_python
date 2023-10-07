@@ -17,7 +17,7 @@ if __name__ == "__main__":
     def select_state(username, password, database):
         database = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
         cursor = database.cursor()
-        cursor.execute("SELECT * FROM states WHERE BINARY SUBSTRING(name,1,1)='n'")
+        cursor.execute("SELECT * FROM states WHERE BINARY SUBSTRING(name,1,1)='N'")
         rows = cursor.fetchall()
         for row in rows:
             print(row)
