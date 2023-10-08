@@ -17,7 +17,20 @@ Connection = database.connect()
 
 Base = declarative_base()
 
+"""
+State defines a state class used to create a states table in
+the database
+"""
+
 class State(Base):
+
+    """
+    __tablename__: Defines the name of the table in the db
+
+    __init__: initializes the State object
+
+    name(string(128)): a column name in the db
+    """
     __tablename__ = "states"
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
