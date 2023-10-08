@@ -2,9 +2,9 @@ import sys
 import MySQLdb
 
 if __name__ == "__main__":
-    # Check if all three arguments are provided
+    # Check if all arguments are provided
     if len(sys.argv) != 5:
-        print("Please provide 3 arguments: MySQL username, MySQL password, and database name")
+        print("Please provide 4 arguments: MySQL username, MySQL password, database name and state")
         sys.exit(1)
 
     # Get the arguments from the command line
