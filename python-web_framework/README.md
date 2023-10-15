@@ -1,0 +1,1 @@
+This readme is part of the requirements for completing the ALX Software Engineering program. I will update it as time goes on.
