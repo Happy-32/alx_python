@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 def fibonacci_sequence(n):
     fib_seq = [0, 1]
-    if n == 0:
+    if n <= 0:
         fib_seq = []
     elif n == 1:
         fib_seq = [0]
