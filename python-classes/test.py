@@ -1,10 +1,10 @@
-class area:
-    def __init__(self, length, width):
-        self.length = length
-        self.width = width
-    
-    def prod(self):
-        return self.length * self.width
+#!/usr/bin/python3
+Square = __import__('3-square').Square
 
-squareArea = area(5, 7)
-print(squareArea.prod())
+try:
+    my_square = Square(89)
+    print(my_square.size)
+    my_square.size = "89"
+    print(my_square.size)
+except Exception as e:
+    print(e)
