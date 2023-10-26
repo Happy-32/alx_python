@@ -12,7 +12,13 @@ class BaseGeometry:
             raise ValueError("{} must be greater than 0".format(name))
 
 
+"""
+...
+"""
 class Rectangle(BaseGeometry):
+    """
+    ...
+    """
     def __init__(self, width, height):
         self.__width = width
         self.__height = height
@@ -25,8 +31,13 @@ class Rectangle(BaseGeometry):
     def __str__(self):
         return f"[Rectangle] {self.__width}/{self.__height}"
 
-
+"""
+...
+"""
 class Square(Rectangle):
+    """
+    ...
+    """
     def __init__(self, size):
         self.__size = size
         self.integer_validator("size", size)
