@@ -1,8 +1,8 @@
-Rectangle = __import__('7-rectangle').Rectangle
-
 """
 ...
 """
+Rectangle = __import__('7-rectangle').Rectangle
+
 class Square(Rectangle):
     """
     ...
