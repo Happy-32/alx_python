@@ -10,12 +10,24 @@ class Square(Rectangle):
         if size <= 0:
             raise ValueError("size must be > 0")
         super().__init__(size, size, x, y, id)
+        self.__size = size
+        self.__x = x
+        self.__y = y
+
+
+    @property
+    def size(self):
+        return self.__size
+    
+    @size.setter
+    def size(self, size):
+        self.__size = size
     
     def area(self):
         """
         Computes the area of the square
         """
-        return self.width * self.width
+        return self.size * self.size
 
     def display(self):
         """
@@ -25,6 +37,34 @@ class Square(Rectangle):
             print()
         for _ in range(self.height):
             print(" " * self.x + "#" * self.width)
+
+    def update(self, *args, **kwargs):
+        """
+        Updates the attributes of the square
+
+        Args:
+            *args: Variable length argument list
+            **kwargs: Arbitrary keyword arguments
+        """
+        if args:
+            if len(args) >= 1:
+                self.id = args[0]
+            if len(args) >= 2:
+                size = args[1]
+                if size <= 0:
+                    raise ValueError("size must be > 0")
+                self.width = size
+                self.height = size
+            if len(args) >= 3:
+                self.x = args[2]
+            if len(args) >= 4:
+                self.y = args[3]
+        else:
+            for i, value in kwargs.items():
+                if i == "size":
+                    if value <= 0:
+                        raise ValueError("size must be > 0")
+                setattr(self, i, value)
     
     def __str__(self):
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
