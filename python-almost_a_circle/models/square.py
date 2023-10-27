@@ -1,3 +1,6 @@
+"""
+Square defines a python class that inherits from Rectangle
+"""
 from .rectangle import Rectangle
 class Square(Rectangle):
     """
