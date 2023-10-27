@@ -1,25 +1,8 @@
 """
-Base defines a python class 
+Rectangle defines a python class that inherits from Base
 
--Base: class representing Base
 """
-class Base:
-    """
-    __init__(self, id=None)- Attribute to checK if id is None
-
-    __init__(id = None): initializes the Base object
-    __nb_objects: a class level attribute
-    """
-    __nb_objects = 0
-
-    def __init__(self, id=None):
-        if id is not None:
-            self.id = id
-        else:
-            Base.__nb_objects += 1 #Base allows you to access all class level attributes
-            self.id = Base.__nb_objects
-
-
+from .base import Base
 class Rectangle(Base):
     """
     Rectangle represents a Rectangle object that inherits from the Base class
