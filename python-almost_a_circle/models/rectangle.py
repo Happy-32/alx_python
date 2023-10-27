@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """
 Base defines a python class 
 
@@ -209,7 +208,7 @@ class Rectangle(Base):
 
     def __str__(self):
         """
-        print in stdout the Rectangle instance with the character # by taking care of x and y
+        print the Rectangle instance with the character # by taking care of x and y
         """
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
     
