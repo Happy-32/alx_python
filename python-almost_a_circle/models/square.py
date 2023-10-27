@@ -2,8 +2,6 @@
 Square defines a python class that inherits from Rectangle
 """
 from .rectangle import Rectangle
-from models.rectangle import Rectangle
-
 class Square(Rectangle):
     """
     ....
@@ -50,13 +48,19 @@ class Square(Rectangle):
 
     def update(self, *args, **kwargs):
         """
-        ....
+        ...
         """
         if args:
             if len(args) >= 1:
                 self.id = args[0]
             if len(args) >= 2:
-                self.size = args[1]
+                size = args[1]
+                if not isinstance(size, int):
+                    raise TypeError("size must be an integer")
+                if size <= 0:
+                    raise ValueError("size must be > 0")
+                self.width = size
+                self.height = size
             if len(args) >= 3:
                 self.x = args[2]
             if len(args) >= 4:
@@ -64,9 +68,11 @@ class Square(Rectangle):
         else:
             for key, value in kwargs.items():
                 if key == "size":
-                    self.size = value
-                else:
-                    setattr(self, key, value)
+                    if not isinstance(value, int):
+                        raise TypeError("size must be an integer")
+                    if value <= 0:
+                        raise ValueError("size must be > 0")
+                setattr(self, key, value)
 
     def __str__(self):
         """
