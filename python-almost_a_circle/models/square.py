@@ -33,7 +33,7 @@ class Square(Rectangle):
         """
         Computes the area of the square
         """
-        return self.size * self.size
+        return self.__size * self.__size
 
     def display(self):
         """
@@ -41,8 +41,8 @@ class Square(Rectangle):
         """
         for _ in range(self.y):
             print()
-        for _ in range(self.height):
-            print(" " * self.x + "#" * self.width)
+        for _ in range(self.size):
+            print(" " * self.x + "#" * self.size)
 
     def update(self, *args, **kwargs):
         """
@@ -73,4 +73,4 @@ class Square(Rectangle):
                 setattr(self, i, value)
     
     def __str__(self):
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
