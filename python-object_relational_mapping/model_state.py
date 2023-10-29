@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """
 State class represents a table in the database called 'states'.
 
@@ -10,6 +9,7 @@ Methods:
     __init__(self, name): Initializes a State object with a given name.
 
 """
+#!/usr/bin/python3
 import sys
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -17,6 +17,13 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 class State(Base):
+    """
+    __tablename__: Defines the name of the table in the db
+
+    __init__: initializes the State object
+
+    name(string(128)): a column name in the db
+    """
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     name = Column(String(128), nullable=False)
