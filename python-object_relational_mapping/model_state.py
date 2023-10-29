@@ -36,7 +36,6 @@ Methods:
     __init__(self, name): Initializes a State object with a given name.
 
 """
-
 class State(Base):
 
     """
