@@ -7,6 +7,9 @@ class Rectangle(BaseGeometry):
     """
     ...
     """
+    def __dir__(self):
+        return [attr for attr in dir(type(self)) if attr != '__init_subclass__']
+
     def __init__(self, width, height):
         self.__width = width
         self.__height = height
