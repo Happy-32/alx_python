@@ -1,5 +1,10 @@
 """
-.....
+This script demonstrates how to interact with a MySQL database using SQLAlchemy.
+
+The script expects three command-line arguments: MySQL username, MySQL password, and database name.
+
+Usage: python script.py <username> <password> <database>
+
 """
 from sqlalchemy import create_engine, Column, Integer, String
 import sys
@@ -21,8 +26,15 @@ Connection = database.connect()
 Base = declarative_base()
 
 """
-State defines a state class used to create a states table in
-the database
+State class represents a table in the database called 'states'.
+
+Attributes:
+    id (Column): Primary key column of type Integer with auto-increment and non-null constraints.
+    name (Column): Column of type String with a length of 128 characters and non-null constraint.
+
+Methods:
+    __init__(self, name): Initializes a State object with a given name.
+
 """
 
 class State(Base):
