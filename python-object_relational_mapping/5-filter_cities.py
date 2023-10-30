@@ -16,6 +16,9 @@ if __name__ == "__main__":
 
     # print("{}, {}, {}".format(username,password,database))
 
+    def alphanumeric_sort(s):
+        return ''.join(c for c in s if c.isalnum())
+    
     def select_state(username, password, database, state):
         database = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
         cursor = database.cursor()
@@ -32,7 +35,7 @@ if __name__ == "__main__":
         rows = cursor.fetchall()
 
         city_names = [row[0] for row in rows]
-        city_names.sort()
+        city_names.sort(key=alphanumeric_sort)
         city_names_str = ', '.join(city_names)
         print(city_names_str)
 
