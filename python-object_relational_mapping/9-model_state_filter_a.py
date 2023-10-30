@@ -21,8 +21,8 @@ if states:
     for state in states:
         print("{}: {}".format(state.id, state.name))
 else:
-    print("Nothing")
-print(end="")
+    print("")
+
 
 connection.close()
 
