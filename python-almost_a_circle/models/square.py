@@ -10,6 +10,12 @@ class Square(Rectangle):
         """
         ....
         """
+        try:
+            if not isinstance(size, int):
+                raise TypeError("width must be an integer")
+        except TypeError as e:
+            print(e)
+            return
 
         try:
             size = int(size)
@@ -18,9 +24,9 @@ class Square(Rectangle):
         except ValueError as e:
             print(e)
             return
+        
+        
         super().__init__(size, size, x, y, id)
-        # else:
-            # self.size = size
 
     @property
     def size(self):
@@ -34,10 +40,20 @@ class Square(Rectangle):
         """
         ....
         """
-        if not isinstance(value, int):
-            raise TypeError("width must be an integer")
-        if value <= 0:
-            raise ValueError("width must be > 0")
+        try:
+            if not isinstance(value, int):
+                raise TypeError("width must be an integer")
+        except TypeError as e:
+            print(e)
+            return
+        
+        try:
+            value = int(value)
+            if value <= 0:
+                raise ValueError("width must be > 0")
+        except ValueError as e:
+            print(e)
+            return
         self.width = value
         self.height = value
 
@@ -65,10 +81,19 @@ class Square(Rectangle):
                 self.id = args[0]
             if len(args) >= 2:
                 size = args[1]
-                if not isinstance(size, int):
-                    raise TypeError("size must be an integer")
-                if size <= 0:
-                    raise ValueError("size must be > 0")
+                try:
+                    if not isinstance(size, int):
+                        raise TypeError("width must be an integer")
+                except TypeError as e:
+                    print(e)
+                    return
+                
+                try:
+                    if size <= 0:
+                        raise ValueError("width must be > 0")
+                except ValueError as e:
+                    print(e)
+                    return
                 self.width = size
                 self.height = size
             if len(args) >= 3:
@@ -78,10 +103,19 @@ class Square(Rectangle):
         else:
             for key, value in kwargs.items():
                 if key == "size":
-                    if not isinstance(value, int):
-                        raise TypeError("size must be an integer")
-                    if value <= 0:
-                        raise ValueError("size must be > 0")
+                    try:
+                        if not isinstance(value, int):
+                            raise TypeError("width must be an integer")
+                    except TypeError as e:
+                        print(e)
+                        return
+                    
+                    try:
+                        if value <= 0:
+                            raise ValueError("width must be > 0")
+                    except ValueError as e:
+                        print(e)
+                        return
                 setattr(self, key, value)
 
     def __str__(self):
@@ -89,5 +123,3 @@ class Square(Rectangle):
         ....
         """
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
-
-
