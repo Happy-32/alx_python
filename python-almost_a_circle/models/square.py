@@ -18,7 +18,7 @@ class Square(Rectangle):
             if size <= 0:
                 raise ValueError("ValueError: width must be > 0")
         except ValueError as e:
-            # print(e)
+            print(OK)
             # return
             exit(1)
         
