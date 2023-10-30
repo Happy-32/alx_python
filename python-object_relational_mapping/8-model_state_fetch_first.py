@@ -15,7 +15,7 @@ Base.metadata.bind = database
 # Base.metadata.create_all(bind=database)
 connection = database.connect()
 
-state = connection.execute(State.__table__.select().order_by(State.id)).fetchone()
+state = connection.execute((State.__table__.select().order_by(State.id)).fetchone())
 
 if state:
     print("{}: {}".format(state.id, state.name))
