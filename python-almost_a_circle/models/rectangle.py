@@ -2,7 +2,7 @@
 Rectangle defines a python class that inherits from Base
 
 """
-from .base import Base
+from base import Base
 class Rectangle(Base):
     """
     Rectangle represents a Rectangle object that inherits from the Base class

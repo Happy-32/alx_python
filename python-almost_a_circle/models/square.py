@@ -1,29 +1,23 @@
-"""
-Square defines a python class that inherits from Rectangle
-"""
-from .rectangle import Rectangle
+from rectangle import Rectangle
+
 class Square(Rectangle):
-    """
-    ....
-    """
     def __init__(self, size, x=0, y=0, id=None):
-        """
-        ....
-        """
+        try:
+            size = int(size)
+            if size <= 0:
+                raise ValueError("width must be > 0")
+        except ValueError as e:
+            print(e)
+            return
         super().__init__(size, size, x, y, id)
+        self.__size = size
 
     @property
     def size(self):
-        """
-        ......
-        """
         return self.width
-
+    
     @size.setter
     def size(self, value):
-        """
-        ....
-        """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -32,24 +26,15 @@ class Square(Rectangle):
         self.height = value
 
     def area(self):
-        """
-        ....
-        """
         return self.size ** 2
 
     def display(self):
-        """
-        ....
-        """
         for _ in range(self.y):
             print()
         for _ in range(self.size):
             print(" " * self.x + "#" * self.size)
 
     def update(self, *args, **kwargs):
-        """
-        ...
-        """
         if args:
             if len(args) >= 1:
                 self.id = args[0]
@@ -75,7 +60,6 @@ class Square(Rectangle):
                 setattr(self, key, value)
 
     def __str__(self):
-        """
-        ....
-        """
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
+
+# s = Square(-12)
