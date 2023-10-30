@@ -8,8 +8,9 @@ if len(sys.argv) != 4:
 username = sys.argv[1]
 password = sys.argv[2]
 database = sys.argv[3]
+port = 3306
 
-path = "mysql+mysqldb://{}:{}@localhost/{}".format(username, password, database)
+path = "mysql+mysqldb://{}:{}@localhost:{}/{}".format(username, password, port, database)
 database = create_engine(path)
 Base.metadata.bind = database
 # Base.metadata.create_all(bind=database)
