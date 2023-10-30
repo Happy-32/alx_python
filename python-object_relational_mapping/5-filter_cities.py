@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
         return city_names
         city_names = select_state(username, password, database, state)
-
+        city_names.sort()
         city_names_str = ', '.join(city_names)
         print(city_names_str)
     
