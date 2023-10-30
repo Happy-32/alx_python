@@ -31,7 +31,8 @@ if __name__ == "__main__":
         cursor.execute(query, (state,))
         rows = cursor.fetchall()
 
-        city_names = set(row[0] for row in rows)
+        city_names = [row[0] for row in rows]
+        city_names.sort()
         city_names_str = ', '.join(city_names)
         print(city_names_str)
 
