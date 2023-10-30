@@ -76,6 +76,9 @@ class Square(Rectangle):
             print(" " * self.x + "#" * self.size)
 
     def update(self, *args, **kwargs):
+        """
+        ...
+        """
         if args:
             if len(args) >= 1:
                 self.id = args[0]
