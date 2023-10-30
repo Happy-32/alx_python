@@ -17,7 +17,8 @@ if __name__ == "__main__":
     # print("{}, {}, {}".format(username,password,database))
 
     def select_state(username, password, database, state):
-        database = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
+        database = MySQLdb.connect(host="localhost", port=3306,
+                                   user=username, passwd=password, db=database)
         cursor = database.cursor()
         
         query = """
@@ -44,5 +45,10 @@ if __name__ == "__main__":
         cursor.close()
         database.close()
 
+        return city_names
+        city_names = select_state(username, password, database, state)
+
+        city_names_str = ', '.join(city_names)
+        print(city_names_str)
     
     select_state(username, password, database, state)
