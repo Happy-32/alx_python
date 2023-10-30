@@ -20,8 +20,8 @@ states = connection.execute(State.__table__.select().where(State.name.like('%a%'
 if states:
     for state in states:
         print("{}: {}".format(state.id, state.name))
-else:
-    print("")
+# else:
+#     print("")
 
 
 connection.close()
