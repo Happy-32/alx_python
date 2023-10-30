@@ -10,12 +10,6 @@ class Square(Rectangle):
         """
         ....
         """
-        try:
-            if not isinstance(size, int):
-                raise TypeError("width must be an integer")
-        except TypeError as e:
-            print(e)
-            return
 
         try:
             size = int(size)
@@ -25,6 +19,12 @@ class Square(Rectangle):
             print(e)
             return
         
+        try:
+            if not isinstance(size, int):
+                raise TypeError("width must be an integer")
+        except TypeError as e:
+            print(e)
+            return
         
         super().__init__(size, size, x, y, id)
 
