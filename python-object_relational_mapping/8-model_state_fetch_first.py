@@ -20,7 +20,8 @@ state = connection.execute(State.__table__.select().order_by(State.id)).fetchone
 if state:
     print("{}: {}".format(state.id, state.name))
 else:
-    print("Nothing", end=" ")
+    print("Nothing")
+print(end="")
 
 connection.close()
 
