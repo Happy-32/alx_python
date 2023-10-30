@@ -10,21 +10,24 @@ class Square(Rectangle):
         """
         ....
         """
+        if not isinstance(size, int):
+            raise TypeError("width must be an integer")
 
         try:
             size = int(size)
             if size <= 0:
-                raise ValueError("width must be > 0")
+                raise ValueError("ValueError: width must be > 0")
         except ValueError as e:
-            print(e)
-            return
+            # print(e)
+            # return
+            exit(1)
         
-        try:
-            if not isinstance(size, int):
-                raise TypeError("width must be an integer")
-        except TypeError as e:
-            print(e)
-            return
+        # try:
+        #     if not isinstance(size, int):
+        #         raise TypeError("width must be an integer")
+        # except TypeError as e:
+        #     print(e)
+        #     return
         
         super().__init__(size, size, x, y, id)
 
@@ -73,24 +76,15 @@ class Square(Rectangle):
             print(" " * self.x + "#" * self.size)
 
     def update(self, *args, **kwargs):
-        """
-        ...
-        """
         if args:
             if len(args) >= 1:
                 self.id = args[0]
             if len(args) >= 2:
                 size = args[1]
                 try:
-                    if not isinstance(size, int):
-                        raise TypeError("width must be an integer")
-                except TypeError as e:
-                    print(e)
-                    return
-                
-                try:
+                    size = int(size)
                     if size <= 0:
-                        raise ValueError("width must be > 0")
+                        raise ValueError("size must be > 0")
                 except ValueError as e:
                     print(e)
                     return
@@ -104,15 +98,9 @@ class Square(Rectangle):
             for key, value in kwargs.items():
                 if key == "size":
                     try:
-                        if not isinstance(value, int):
-                            raise TypeError("width must be an integer")
-                    except TypeError as e:
-                        print(e)
-                        return
-                    
-                    try:
+                        value = int(value)
                         if value <= 0:
-                            raise ValueError("width must be > 0")
+                            raise ValueError("size must be > 0")
                     except ValueError as e:
                         print(e)
                         return
