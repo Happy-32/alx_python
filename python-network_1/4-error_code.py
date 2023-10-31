@@ -11,5 +11,7 @@ try:
     stat_code = request.status_code
     if stat_code >= 400:
         print("Error Code: ",stat_code)
+    if stat_code == 200:
+        print("Regular request")
 except:
     pass
