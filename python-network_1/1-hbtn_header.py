@@ -1,4 +1,5 @@
-import requests, sys
+import requests
+import sys
 
 # print(sys.argv[1])
 request = requests.get(sys.argv[1])
