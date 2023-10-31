@@ -1,9 +1,9 @@
 import requests
 import sys
 
-if len(sys.argv) < 2:
-    print("insufficient Args")
-
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("insufficient Args")
 letter = sys.argv[1]
 
 def search(letter):   
