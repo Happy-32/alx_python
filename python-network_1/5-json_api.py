@@ -4,9 +4,9 @@ import sys
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("No result")
-    letter = sys.argv[1]
+    # letter = sys.argv[1]
 
-def search(letter):   
+def search(letter = sys.argv[1]):   
     url = "http://0.0.0.0:5000/search_user"
 
     data = {"q": letter}
@@ -30,4 +30,4 @@ def search(letter):
     except requests.exceptions.RequestException as e:
         print("Request could not be made")
 
-search(letter)
+search(sys.argv[1])
