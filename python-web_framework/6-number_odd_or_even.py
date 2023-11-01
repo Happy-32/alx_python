@@ -42,9 +42,9 @@ def number_template(n):
 def number_odd_or_even(n):
     if isinstance(n, int):
         if n % 2 == 0:
-            return render_template('number_odd_or_even.html', number=n, parity='even')
+            return render_template('6-number_odd_or_even.html', number=n, parity='even')
         else:
-            return render_template('number_odd_or_even.html', number=n, parity='odd')
+            return render_template('6-number_odd_or_even.html', number=n, parity='odd')
     else:
         return 'Invalid input. Please provide an integer.'
 
