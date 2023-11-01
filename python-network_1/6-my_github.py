@@ -25,7 +25,7 @@ def getCredentials():
             data = request.json()
             print(data['id'])
         else:
-            print("failure")
+            print("None")
     except requests.exceptions.RequestException as e:
         print("Request could not be made")
 
