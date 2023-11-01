@@ -34,7 +34,7 @@ def number(n):
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
     if isinstance(n, int):
-        return render_template('number_template.html', number=n)
+        return render_template('5-number.html', number=n)
     else:
         return 'Invalid input. Please provide an integer.'
 
