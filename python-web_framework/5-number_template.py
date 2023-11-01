@@ -1,6 +1,12 @@
+"""
+Starts a web server
+"""
 from flask import Flask, render_template
-app = Flask(__name__)
 
+app = Flask(__name__)
+"""
+Creating the routes
+"""
 @app.route('/', strict_slashes=False)
 def hello():
     return 'Hello HBNB!'
