@@ -1,7 +1,8 @@
 import requests
 import sys
 
-
+if __name__ == "__main__":
+    letter = sys.argv[1]
 
 def search(letter):   
     url = "http://0.0.0.0:5000/search_user"
@@ -38,6 +39,4 @@ def search(letter):
     # except requests.exceptions.RequestException as e:
     #     print("Request could not be made")
 
-if __name__ == "__main__":
-    letter = sys.argv[1] if len(sys.argv) > 1 else ""
-    search(letter)
+search(letter)
