@@ -35,15 +35,8 @@ if __name__ == "__main__":
         rows = cursor.fetchall()
 
         city_names = [row[0] for row in rows]
-        city_names.sort(key=alphanumeric_sort)
-        city_names_str = ', '.join(city_names)
-        print(city_names_str)
+        print(*city_names, sep=", ")
 
-        # city_names = ', '.join(row[0] for row in rows)
-        # print(city_names)
-        
-        # for row in rows:
-            # print(row[0])
         cursor.close()
         database.close()
 
