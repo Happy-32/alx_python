@@ -16,7 +16,7 @@ employeeName = employee['name']
 totalTasks = len(todo)
 taskCompleted = sum(1 for i in todo if i['completed'])
 
-print('Emplyee {} is done with tasks ({}/{})'.format(employeeName, taskCompleted, totalTasks))
+print('Emplyee {} is done with tasks ({}/{}):'.format(employeeName, taskCompleted, totalTasks))
 for i in todo:
     if i['completed']:
         print('\t',i['title'])
