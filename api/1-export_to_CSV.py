@@ -15,23 +15,18 @@ def getTodo(id):
     employee = employeeResponse.json()
     employeeName = employee['username']
     totalTasks = len(todo)
-    taskCompleted = sum(1 for i in todo if i['completed'])
 
-    csvFile = []
-    # csvFile.append(['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE'])
-    for i in todo:
-        csvFile.append([id,employeeName, str(i['completed']), i['title']])
-    
+    csv_filename = "{}.csv".format(id)
 
-    with open('USER_ID.csv', 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerows(csvFile)
+    with open(csv_filename, mode="w", newline="") as file:
+        csv_writer = csv.writer(file)
+        csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
 
+        for task in todo:
+            tasks_completed = "Completed" if task["completed"] else "Not Completed"
+            csv_writer.writerow([id, employeeName, tasks_completed, task["title"]])
 
-    # print('Emplyee {} is done with tasks ({}/{})'.format(employeeName, taskCompleted, totalTasks))
-    # for i in todo:
-    #     if i['completed']:
-    #         print('\t',i['title'])
+    with open(csv_filename, 'r') as f:
+        pass
 
 getTodo(id)
-
