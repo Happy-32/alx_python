@@ -18,7 +18,7 @@ def getTodo(id):
     taskCompleted = sum(1 for i in todo if i['completed'])
 
     csvFile = []
-    csvFile.append(['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE'])
+    # csvFile.append(['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE'])
     for i in todo:
         csvFile.append([id,employeeName, str(i['completed']), i['title']])
     
