@@ -30,6 +30,8 @@ def getTodo(id):
             task_completed_status = "Completed" if task["completed"] else "Not Completed"
             # csv_writer.writerow([id, username, task_completed_status, task["title"]])
             # csv_writer.writerow('"' + str(task['userId']) + '","' + employee[0]['username'] + '","' + str(task['completed']) + '","' + task['title'] + '"')
-            csv_writer.writerow([task['userId'], username, task_completed_status, task['title']])
+            # csv_writer.writerow([task['userId'], username, task_completed_status, task['title']])
+            csv_writer.writerow(['"' + str(task['userId']) + '"', '"' + username + '"', '"' + task_completed_status + '"', '"' + task['title'] + '"'])
+
 
 getTodo(id)
