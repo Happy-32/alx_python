@@ -1,37 +1,38 @@
 import csv
+import json
 import requests
 import sys
 
-if len(sys.argv) != 2:
-    sys.exit(1)
-
 id = sys.argv[1]
 
+todoItemsUrl = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(id)
+employeeUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(id)
 
-def getTodo(id):
-    employeeURL = "https://jsonplaceholder.typicode.com/users/{}".format(id)
-    todoURL = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+todoResponse = requests.get(todoItemsUrl)
+employeeResponse = requests.get(employeeUrl)
+todo = todoResponse.json()
+employee = employeeResponse.json()
 
-    employeeResponse = requests.get(employeeURL)
-    todoResponse = requests.get(todoURL)
-    employee = employeeResponse.json()
-    todo = todoResponse.json()
+employeeId = employee['id']
+employeeName = employee['name']
 
-    username = employee['username']
+# Create a CSV file with the employee ID as the filename
+filename = '{}.csv'.format(employeeId)
 
-    csv_filename = "{}.csv".format(id)
+# Open the CSV file in write mode
+with open(filename, 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    
+    # Write the header row
+    writer.writerow(['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE'])
+    
+    # Write each task as a row in the CSV file
+    for task in todo:
+        taskId = task['id']
+        taskTitle = task['title']
+        taskCompleted = task['completed']
+        
+        # Write the task details as a row in the CSV file
+        writer.writerow([employeeId, employeeName, taskCompleted, taskTitle])
 
-    with open(csv_filename, "w", newline="") as file:
-        csv_writer = csv.writer(file)
-
-        csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-
-        for task in todo:
-            task_completed_status = "Completed" if task["completed"] else "Not Completed"
-            # csv_writer.writerow([id, username, task_completed_status, task["title"]])
-            # csv_writer.writerow('"' + str(task['userId']) + '","' + employee[0]['username'] + '","' + str(task['completed']) + '","' + task['title'] + '"')
-            # csv_writer.writerow([task['userId'], username, task_completed_status, task['title']])
-            csv_writer.writerow(['"' + str(task['userId']) + '"', '"' + username + '"', '"' + task_completed_status + '"', '"' + task['title'] + '"'])
-
-
-getTodo(id)
+print("Data exported to {}".format(filename))
