@@ -14,7 +14,7 @@ todo = todoResponse.json()
 employee = employeeResponse.json()
 
 employeeId = employee['id']
-employeeName = employee['name']
+employeeName = employee['username']
 
 # Create a CSV file with the employee ID as the filename
 filename = '{}.csv'.format(employeeId)
@@ -34,5 +34,3 @@ with open(filename, 'w', newline='') as csvfile:
         
         # Write the task details as a row in the CSV file
         writer.writerow([employeeId, employeeName, taskCompleted, taskTitle])
-
-print("Data exported to {}".format(filename))

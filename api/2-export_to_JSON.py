@@ -13,7 +13,7 @@ todo = todoResponse.json()
 employee = employeeResponse.json()
 
 employeeId = employee['id']
-employeeName = employee['name']
+employeeName = str(employee['name'])
 
 tasks = []
 
@@ -43,4 +43,3 @@ filename = '{}.json'.format(employeeId)
 with open(filename, 'w') as jsonfile:
     json.dump(employeeTasks, jsonfile)
 
-print("Data exported to {}".format(filename))
