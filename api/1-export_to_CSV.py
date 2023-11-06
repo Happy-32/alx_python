@@ -1,32 +1,33 @@
 import csv
-import json
 import requests
 import sys
 
+if len(sys.argv) != 2:
+    sys.exit(1)
+
 id = sys.argv[1]
 
-def getTodo(id):
-    todoItemsUrl = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(id)
-    employeeUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(id)
 
-    todoResponse = requests.get(todoItemsUrl)
-    employeeResponse = requests.get(employeeUrl)
-    todo = todoResponse.json()
+def getTodo(id):
+    employeeURL = "https://jsonplaceholder.typicode.com/users/{}".format(id)
+    todoURL = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+
+    employeeResponse = requests.get(employeeURL)
+    todoResponse = requests.get(todoURL)
     employee = employeeResponse.json()
-    employeeName = employee['username']
-    totalTasks = len(todo)
+    todo = todoResponse.json()
+
+    username = employee['username']
 
     csv_filename = "{}.csv".format(id)
 
-    with open(csv_filename, mode="w", newline="") as file:
+    with open(csv_filename, "w", newline="") as file:
         csv_writer = csv.writer(file)
+
         csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
 
         for task in todo:
-            tasks_completed = "Completed" if task["completed"] else "Not Completed"
-            csv_writer.writerow([id, employeeName, tasks_completed, task["title"]])
-
-    with open(csv_filename, 'r') as f:
-        pass
+            task_completed_status = "Completed" if task["completed"] else "Not Completed"
+            csv_writer.writerow([id, username, task_completed_status, task["title"]])
 
 getTodo(id)
