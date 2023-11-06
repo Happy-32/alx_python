@@ -1,7 +1,7 @@
-import requests
-import json
-import sys
 import csv
+import json
+import requests
+import sys
 
 id = sys.argv[1]
 
