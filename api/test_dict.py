@@ -28,7 +28,7 @@ def user_info(id):
         for line in f:
             if not line == '\n':
                 if not str(id) in line:
-                    print("User ID: Incorrect / ", end='')
+                    print("User ID: Incorrect ed/ ", end='')
                     flag = 1
                 if not str(username) in line:
                     print("Username: Incorrect")
