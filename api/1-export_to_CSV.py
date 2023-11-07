@@ -24,8 +24,6 @@ filename = '{}.csv'.format(employeeId)
 with open(filename, 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     
-    # Write the header row
-    # writer.writerow(['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE'])
     
     # Write each task as a row in the CSV file
     for task in todo:
@@ -35,3 +33,4 @@ with open(filename, 'w', newline='') as csvfile:
         
         # Write the task details as a row in the CSV file
         writer.writerow([f"{employeeId}", f"{employeeName}", f"{taskCompleted}", f"{taskTitle}"])
+        
