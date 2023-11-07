@@ -1,5 +1,5 @@
 """
-This module exports the response to a JSON file
+This module exports the response to a json file
 """
 import json
 import requests
