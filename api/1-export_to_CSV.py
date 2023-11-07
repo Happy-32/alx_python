@@ -13,8 +13,9 @@ employeeResponse = requests.get(employeeUrl)
 todo = todoResponse.json()
 employee = employeeResponse.json()
 
-employeeId = employee['id']
-employeeName = employee['username']
+employeeId = employee.get('id')
+employeeName = employee.get('username')
+
 
 # Create a CSV file with the employee ID as the filename
 filename = '{}.csv'.format(employeeId)

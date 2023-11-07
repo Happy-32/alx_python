@@ -12,8 +12,8 @@ employeeResponse = requests.get(employeeUrl)
 todo = todoResponse.json()
 employee = employeeResponse.json()
 
-employeeId = employee['id']
-employeeName = str(employee['name'])
+employeeId = employee.get('id')
+employeeName = employee.get('username')
 
 tasks = []
 

@@ -13,8 +13,8 @@ tasks = {}
 
 # Create a dictionary of tasks for each employee
 for employee in employees:
-    employeeId = employee['id']
-    employeeName = employee['name']
+    employeeId = employees.get('id')
+    employeeName = employees.get('username')
     
     # Filter tasks for the current employee
     employeeTasks = [task for task in todos if task['userId'] == employeeId]
