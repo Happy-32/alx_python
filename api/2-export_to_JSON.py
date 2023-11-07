@@ -33,15 +33,15 @@ def employeeID(employeeId):
 
 
     employee_json_data = {
-        "USER_ID": [
-            {
-                "task": task['title'],
-                "completed": task['completed'],
-                "username": employeeName
-            }
-            for task in todo
-        ]
-    }
+    "USER_ID": [
+        {
+            "task": task['title'],
+            "completed": task['completed'],
+            "username": employeeName
+        }
+        for task in todo
+    ]
+}
 
     # Write JSON data to a file
     json_filename = f'{employeeId}.json'
