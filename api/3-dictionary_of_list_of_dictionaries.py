@@ -13,8 +13,8 @@ tasks = {}
 
 # Create a dictionary of tasks for each employee
 for employee in employees:
-    employeeId = employees.get('id')
-    employeeName = employees.get('username')
+    employeeId = employee['id']
+    employeeName = employee['name']
     
     # Filter tasks for the current employee
     employeeTasks = [task for task in todos if task['userId'] == employeeId]
@@ -36,9 +36,8 @@ for employee in employees:
     tasks[employeeId] = taskList
 
 # Create a dictionary for all employees' tasks
-allEmployeeTasks = {
-    'tasks': tasks
-}
+allEmployeeTasks = tasks
+
 
 # Create a JSON file named "todo_all_employees.json"
 filename = 'todo_all_employees.json'
