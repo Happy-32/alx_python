@@ -5,7 +5,16 @@ import json
 import requests
 import sys
 
-id = sys.argv[1]
+if __name__ == "__main__":
+    if len(sys.argv) !=2:
+        print("Enter an id")
+        sys.exit(1)
+
+    try:
+        id = int(sys.argv[1])
+    except ValueError:
+        print("emplpyee id must be an integer")
+        sys.exit(1)
 
 todoItemsUrl = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(id)
 employeeUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(id)
