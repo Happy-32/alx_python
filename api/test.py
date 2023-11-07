@@ -1,36 +1,58 @@
-#!/usr/bin/python3
 """
-Check student .CSV output of user information
+This module exports data in the JSON format.
 """
 
-import csv
+import json
 import requests
 import sys
 
-users_url = "https://jsonplaceholder.typicode.com/users?id="
-todos_url = "https://jsonplaceholder.typicode.com/todos"
+def get_employee_info(employee_id):
+    # Define the API endpoints
+    user_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
+    todos_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos'
 
+    # Fetch employee information
+    user_response = requests.get(user_url)
+    user_data = user_response.json()
 
-def user_info(id):
-    """ Check user information """
+    if 'id' not in user_data:
+        print(f"USER_ID {employee_id} is not valid.")
+        return
 
-    total_tasks = 0
-    response = requests.get(todos_url).json()
-    for i in response:
-        if i['userId'] == id:
-            total_tasks += 1
+    employee_id = user_data.get('id')
+    employee_name = user_data.get('username')
 
-    num_lines = 0
-    with open(str(id) + ".csv", 'r') as f:
-        for line in f:
-            if not line == '\n':
-                num_lines += 1
+    # Fetch employee's TODO list
+    todos_response = requests.get(todos_url)
+    todos_data = todos_response.json()
 
-    if total_tasks == num_lines:
-        print("Number of tasks in CSV: OK")
-    else:
-        print("Number of tasks in CSV: Incorrect")
+    # Create a JSON data structure
+    employee_json_data = {
+        "USER_ID": [
+            {
+                "task": todo['title'],
+                "completed": todo['completed'],
+                "username": employee_name
+            }
+            for todo in todos_data
+        ]
+    }
 
+    # Write JSON data to a file
+    json_filename = f'{employee_id}.json'
+    with open(json_filename, 'w') as json_file:
+        json.dump(employee_json_data, json_file, indent=4)
+
+    print(f"Data has been exported to {json_filename}.")
 
 if __name__ == "__main__":
-    user_info(int(sys.argv[1]))
+    if len(sys.argv) != 2:
+        print("Usage: python3 gather_data_from_an_API.py <employee_id>")
+        sys.exit(1)
+
+    try:
+        employee_id = int(sys.argv[1])
+        get_employee_info(employee_id)
+    except ValueError:
+        print("Employee ID must be an integer.")
+        sys.exit(1)

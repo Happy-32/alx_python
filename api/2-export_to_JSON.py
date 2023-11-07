@@ -2,7 +2,6 @@
 This module exports the response to a json file
 """
 
-
 import json
 import requests
 import sys
@@ -13,47 +12,41 @@ if __name__ == "__main__":
         sys.exit(1)
 
     try:
-        id = int(sys.argv[1])
+        employeeId = int(sys.argv[1])
     except ValueError:
         print("emplpyee id must be an integer")
         sys.exit(1)
 
-todoItemsUrl = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(id)
-employeeUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(id)
 
-todoResponse = requests.get(todoItemsUrl)
-employeeResponse = requests.get(employeeUrl)
-todo = todoResponse.json()
-employee = employeeResponse.json()
+def employeeID(employeeId):
 
-employeeId = employee.get('id')
-employeeName = employee.get('username')
+    todoItemsUrl = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(id)
+    employeeUrl = 'https://jsonplaceholder.typicode.com/users/{}'.format(id)
 
-tasks = []
+    todoResponse = requests.get(todoItemsUrl)
+    employeeResponse = requests.get(employeeUrl)
+    todo = todoResponse.json()
+    employee = employeeResponse.json()
 
-# Create a dictionary for each task
-for task in todo:
-    taskId = task['id']
-    taskTitle = task['title']
-    taskCompleted = task['completed']
-    
-    taskDict = {
-        'task': taskTitle,
-        'completed': taskCompleted,
-        'username': employeeName
+    employeeId = employee.get('id')
+    employeeName = employee.get('username')
+
+
+    employee_json_data = {
+        "USER_ID": [
+            {
+                "task": task['title'],
+                "completed": task['completed'],
+                "username": employeeName
+            }
+            for task in todo
+        ]
     }
-    
-    tasks.append(taskDict)
 
-# Create a dictionary for the employee's tasks
-employeeTasks = {
-    'USER_ID': tasks
-}
+    # Write JSON data to a file
+    json_filename = f'{employeeId}.json'
+    with open(json_filename, 'w') as json_file:
+        json.dump(employee_json_data, json_file, indent=4)
 
-# Create a JSON file with the employee ID as the filename
-filename = '{}.json'.format(employeeId)
-
-# Write the employee tasks dictionary to a JSON file
-with open(filename, 'w') as jsonfile:
-    json.dump(employeeTasks, jsonfile)
+employeeID(id)
 
