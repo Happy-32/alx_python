@@ -31,7 +31,6 @@ employeeName = employee.get('username')
 
 tasks = []
 
-# Create a dictionary for each task
 for task in todo:
     taskId = task['id']
     taskTitle = task['title']
@@ -45,15 +44,12 @@ for task in todo:
     
     tasks.append(taskDict)
 
-# Create a dictionary for the employee's tasks
 employeeTasks = {
     f"{employeeId}": tasks
 }
 
-# Create a JSON file with the employee ID as the filename
 filename = '{}.json'.format(employeeId)
 
-# Write the employee tasks dictionary to a JSON file
 with open(filename, 'w') as jsonfile:
     json.dump(employeeTasks, jsonfile)
 

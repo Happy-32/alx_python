@@ -1,58 +1,37 @@
-"""
-This module exports data in the JSON format.
-"""
-
-import json
+import csv
 import requests
 import sys
 
-def get_employee_info(employee_id):
-    # Define the API endpoints
-    user_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
-    todos_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos'
+if len(sys.argv) != 2:
+    sys.exit(1)
 
-    # Fetch employee information
-    user_response = requests.get(user_url)
-    user_data = user_response.json()
+employee_id = int(sys.argv[1])
 
-    if 'id' not in user_data:
-        print(f"USER_ID {employee_id} is not valid.")
-        return
+employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
 
-    employee_id = user_data.get('id')
-    employee_name = user_data.get('username')
+employee_response = requests.get(employee_url)
+todos_response = requests.get(todos_url)
 
-    # Fetch employee's TODO list
-    todos_response = requests.get(todos_url)
-    todos_data = todos_response.json()
+if employee_response.status_code != 200 or todos_response.status_code != 200:
+    sys.exit(1)
 
-    # Create a JSON data structure
-    employee_json_data = {
-        "USER_ID": [
-            {
-                "task": todo['title'],
-                "completed": todo['completed'],
-                "username": employee_name
-            }
-            for todo in todos_data
-        ]
-    }
+employee_data = employee_response.json()
+todo_data = todos_response.json()
+employee_name = employee_data.get("name", "unknown employee")
+employee_username = employee_data.get("username", "unkown employee")
 
-    # Write JSON data to a file
-    json_filename = f'{employee_id}.json'
-    with open(json_filename, 'w') as json_file:
-        json.dump(employee_json_data, json_file, indent=4)
+csv_filename = f"{employee_id}.csv"
 
-    print(f"Data has been exported to {json_filename}.")
+with open(csv_filename, mode="w", newline="") as csv_file:
+    csv_writer = csv.writer(csv_file)
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 gather_data_from_an_API.py <employee_id>")
-        sys.exit(1)
+    # csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
 
-    try:
-        employee_id = int(sys.argv[1])
-        get_employee_info(employee_id)
-    except ValueError:
-        print("Employee ID must be an integer.")
-        sys.exit(1)
+    for task in todo_data:
+        task_completed_status = str(task['completed'])
+        csv_writer.writerow([employee_id, employee_username, task_completed_status, task["title"]])
+
+
+with open(csv_filename, 'r') as f:
+     pass

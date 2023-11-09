@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """
-Gather data about employees TODO and export to JSON
+Check student .CSV output of user information
 """
-import json
+
+import csv
 import requests
 import sys
 
@@ -10,39 +11,27 @@ users_url = "https://jsonplaceholder.typicode.com/users?id="
 todos_url = "https://jsonplaceholder.typicode.com/todos"
 
 
-def user_info():
-    """ Fetch user info """
-    
-    from collections import defaultdict
-    correct_output = defaultdict(list)
+def user_info(id):
+    """ Check CSV formatting """
 
     response = requests.get(todos_url).json()
-    for item in response:
-        url = users_url + str(item['userId'])
-        usr_resp = requests.get(url).json()
-        correct_output[item['userId']].append(
-            {'username': usr_resp[0]['username'],
-            'completed': item['completed'],
-            'task': item['title']})
-
-    with open('todo_all_employees.json', 'r') as f:
-        student_output = json.load(f)
-
-    error = False
-    for correct_key, correct_entry in correct_output.items():
+    with open(str(id) + ".csv", 'r') as f:
+        output = f.read().strip()
+        count = 0
         flag = 0
-        for student_key, student_entry in student_output.items():
-            if str(correct_key) == str(student_key):
-                flag = 1
-                if correct_entry != student_entry:
-                    print("User ID {} Tasks: Incorrect".format(str(correct_key)))
-                    error = True
-        if flag == 0:
-            print("User ID {}: Not found".format(str(correct_key)))
-            error = True
+        for i in response:
+            if i['userId'] == id:
+                url = users_url + str(i['userId'])
+                usr_resp = requests.get(url).json()
+                line = '"' + str(i['userId']) + '","' + usr_resp[0]['username'] + '","' + str(i['completed']) + '","' + i['title'] + '"'
+                count += 1
+                if not line in output:
+                    print("Task {} Formatting: Incorrect".format(count))
+                    flag = 1
 
-    if not error:
-        print("User ID and Tasks output: OK")
+    if flag == 0:
+        print("Formatting: OK")
+
 
 if __name__ == "__main__":
-    user_info()
+    user_info(int(sys.argv[1]))
